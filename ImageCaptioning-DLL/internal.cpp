@@ -134,5 +134,5 @@ std::string _getCaption(wchar_t* encoder_path, wchar_t* decoder_path, char* voca
             break;
         }
     }
-    return sentence;
+    return(sentence);
 }

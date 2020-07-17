@@ -3,6 +3,7 @@
 #include "internal.h"
 #include "ImageCaptioningLib.h"
 #include<string>
+#include<iostream>
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
@@ -20,7 +21,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     return TRUE;
 }
 
-const char* getCaption(wchar_t* encoder_path, wchar_t* decoder_path, char* vocab_file_path, char* image_path) {
-    std::string caption = _getCaption(encoder_path, decoder_path, vocab_file_path, image_path);
-    return caption.c_str();
+const char* getCaption(wchar_t* encoder_path, wchar_t* decoder_path, char* vocab_file_path, char* image_path, const char* caption) {
+    std::string result = _getCaption(encoder_path, decoder_path, vocab_file_path, image_path);
+    caption = result.c_str();
 }
