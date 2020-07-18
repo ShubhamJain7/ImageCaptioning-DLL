@@ -8,7 +8,11 @@ int main()
     char vocab_file_path[] = "C:/Users/dell/source/repos/ImageCaptioning/data/vocab.txt";
     char image_path[] = "C:/Users/dell/source/repos/ImageCaptioning/test.jpg";
 
-    const char* caption = new char[20];
-    getCaption(encoder_path, decoder_path, vocab_file_path, image_path, caption);
-    std::cout << caption;
+    
+    int result = doDetection(encoder_path, decoder_path, vocab_file_path, image_path);
+    std::cout << result << std::endl;
+    
+    char caption[300];
+    int size = getCaption(caption, 300);
+    std::cout << caption << std::endl;
 }

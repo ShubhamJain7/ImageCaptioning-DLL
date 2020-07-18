@@ -21,7 +21,18 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     return TRUE;
 }
 
-const char* getCaption(wchar_t* encoder_path, wchar_t* decoder_path, char* vocab_file_path, char* image_path, const char* caption) {
-    std::string result = _getCaption(encoder_path, decoder_path, vocab_file_path, image_path);
-    caption = result.c_str();
+std::string result;
+
+int doDetection(wchar_t* encoder_path, wchar_t* decoder_path, char* vocab_file_path, char* image_path) {
+    result = _getCaption(encoder_path, decoder_path, vocab_file_path, image_path);
+    return result.length();
+}
+
+int getCaption(char* caption, size_t size) {
+    size_t i = 0;
+    for (; i < result.length() && i < size; i++) {
+        caption[i] = result[i];
+    }
+    caption[i] = 0;
+    return i;
 }
