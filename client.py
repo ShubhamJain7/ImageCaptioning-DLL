@@ -29,8 +29,8 @@ if res != 0:
 	lib.getCaption.argtypes = [c_char_p, c_size_t]
 
 	# define string buffer to store caption and call 'getCaption' function
-	caption = create_string_buffer(300)
-	size = lib.getCaption(caption, 300)
+	caption = create_string_buffer(res)
+	size = lib.getCaption(caption, res)
 
 	# get only relevant portion of byte string and decode it
 	string_caption = (caption.raw[:size - 1]).decode('utf-8')
