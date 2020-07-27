@@ -29,6 +29,7 @@ int doDetection(wchar_t* encoder_path, wchar_t* decoder_path, char* vocab_file_p
 }
 
 int getCaption(char* caption, size_t size) {
-    strcpy_s(caption, size, result.c_str());
-    return strlen(caption);
+    size_t length = result.copy(caption, size, 0);
+    caption[length] = '\0';
+    return length;
 }
