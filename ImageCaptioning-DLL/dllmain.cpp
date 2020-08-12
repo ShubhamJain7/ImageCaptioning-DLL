@@ -21,15 +21,16 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     return TRUE;
 }
 
-std::string result;
+using namespace std;
+string result;
 
 int doDetection(wchar_t* encoder_path, wchar_t* decoder_path, char* vocab_file_path, char* image_path) {
     result = _getCaption(encoder_path, decoder_path, vocab_file_path, image_path);
-    return result.length();
+    return (result.length() + 1);
 }
 
 int getCaption(char* caption, size_t size) {
     size_t length = result.copy(caption, size, 0);
-    caption[length] = '\0';
+    caption[min(length, size-1)] = '\0';
     return length;
 }
